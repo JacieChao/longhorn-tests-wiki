@@ -8,7 +8,7 @@ We're also working on converting the manual tests to the automation test as well
 
 # Test cases
 
-The `controller` below is referring to the Longhorn Engine working as the controller. It's not about the Kubernetes controller in the Longhorn Manager.
+The `controller` below is referring to the Longhorn Engine working as the controller. It's not the Kubernetes controller in the Longhorn Manager.
 
 ## Physical node down
 1. One physical node down should result in the state of that node change to `Down`
