@@ -14,3 +14,7 @@ The `controller` below is referring to the Longhorn Engine working as the contro
 1. One physical node down should result in the state of that node change to `Down`
 2. When using with CSI driver, one node with controller and pod down should result in Kubernetes migrate the pod to another node, and Longhorn volume should be able to be used on that node as well.
 3. Reboot the node that the controller attached to. After reboot complete, the volume should be reattached to the node.
+
+## Storage space check
+1. Verify that when a replica got deleted, the storage would be released from the hard disk.
+2. Verify that when a volume got deleted, the storage would be released from the hard disk.
