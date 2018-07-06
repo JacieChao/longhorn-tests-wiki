@@ -18,3 +18,12 @@ The `controller` below is referring to the Longhorn Engine working as the contro
 ## Storage space check
 1. *[automatable]* Verify that when a replica got deleted, the storage space would be released from the hard disk.
 2. *[automatable]* Verify that when a volume got deleted, the storage space would be released from the hard disk.
+
+## Upgrade test
+Old version with both attached volumes and detached volumes. After upgrade:
+1. Check the contents of the attached volumes are good.
+2. Manager cannot do anything about the attached volumes except detaching it.
+3. Manager cannot live-upgrade the attached volumes if the version is incompatible.
+4. Manager can detach the volume.
+5. Manager cannot reattach an existing volume without upgrading the engine image to a manager supported version.
+6. After offline or online (live) engine upgrade, check the contents of the volumes are valid.
