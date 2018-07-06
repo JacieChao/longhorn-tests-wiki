@@ -16,5 +16,5 @@ The `controller` below is referring to the Longhorn Engine working as the contro
 3. Reboot the node that the controller attached to. After reboot complete, the volume should be reattached to the node.
 
 ## Storage space check
-1. *[automatable]* Verify that when a replica got deleted, the storage would be released from the hard disk.
-2. *[automatable]* Verify that when a volume got deleted, the storage would be released from the hard disk.
+1. *[automatable]* Verify that when a replica got deleted, the storage space would be released from the hard disk.
+2. *[automatable]* Verify that when a volume got deleted, the storage space would be released from the hard disk.
