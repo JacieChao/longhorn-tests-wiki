@@ -26,3 +26,12 @@ Old version with both attached volumes and detached volumes. After upgrade:
 3. Manager cannot live-upgrade the attached volumes if the version is incompatible.
 4. Manager cannot reattach an existing volume, until the user has upgraded the engine image to a manager supported version.
 5. After offline or online (live) engine upgrade, check the contents of the volumes are valid.
+
+## Driver test
+In all the following setups, longhorn-tests should pass.
+1. Deploy on v1.8, with FlexvolumeDir set to empty. Driver auto-detection should work and choose Flexvolume. FlexvolumeDir auto-detection should work.
+2. Deploy on v1.9, set FlexvolumeDir correctly. Driver auto-detection should work and choose Flexvolume. But FlexvolumeDir auto-detection won't work (so need to set the FlexvolumeDir)
+3. Deploy on MountPropagation disabled on v1.10, RKE version before https://github.com/rancher/rke/issues/765 resolved. This version has MountPropagation disabled. Driver auto-detection should deploy Flexvolume (instead of CSI) in this version.
+3.1. e.g. https://github.com/rancher/rke/commit/2e82c18d4b6fe3afbb3970cbf518b5c0a811bcaa
+4. Deploy on normal Kubernetes v1.10. CSI should be deployed.
+5. Deploy on normal Kubernetes v1.10 and specify Flexvolume as the driver. Flexvolume should be deployed.
