@@ -26,6 +26,7 @@ Old version with both attached volumes and detached volumes. After upgrade:
 3. Manager cannot live-upgrade the attached volumes if the version is incompatible.
 4. Manager cannot reattach an existing volume, until the user has upgraded the engine image to a manager supported version.
 5. After offline or online (live) engine upgrade, check the contents of the volumes are valid.
+6. For the volume never been attached in the old version, check it's attachable after upgrade.
 
 ## Driver test
 In all the following setups, longhorn-tests should pass.
