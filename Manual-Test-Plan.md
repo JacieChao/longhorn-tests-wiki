@@ -36,3 +36,16 @@ In all the following setups, longhorn-tests should pass.
 3.1. e.g. https://github.com/rancher/rke/commit/2e82c18d4b6fe3afbb3970cbf518b5c0a811bcaa
 4. Deploy on normal Kubernetes v1.10. CSI should be deployed.
 5. Deploy on normal Kubernetes v1.10 and specify Flexvolume as the driver. Flexvolume should be deployed.
+
+## Remove kubernetes nodes
+With both attached volumes and detached volumes. Remove kubernetes nodes from cluster, need to following the steps:
+- Disabled node in longhorn(allowScheduling set to false).
+- Backup all volumes
+- Detached all volumes running on that node.
+- Remove all replicas has scheduled to that node
+- Remove node from kubernetes cluster.
+- Node has removed from kubernetes should both result in state of `Down`, reason `KubernetesNodeDown`. This node could remove from longhorn.
+    - Try manager pod down, node should result in state of `Down`, but couldn't remove from longhorn.
+    - Try kubernetes node `NotReady` or has `DiskPressure`, longhorn node should result in state of `Down`, but couldn't remove from longhorn.
+
+[Uninstall] If user didn't follow the remove node procedure, e.g. didn't remove all replicas on that node before remove kubernetes node. Replicas scheduled on that node could only removed by deleting finalizer of replicas.
